@@ -29,5 +29,4 @@ export const TitleContainer = styled.div<ITitleContainerProps>`
 export const Controllers = styled.div`
   display: flex;
 
-  align-items: center;
 `;
