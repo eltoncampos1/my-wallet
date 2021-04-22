@@ -5,26 +5,51 @@ import { SelectInput } from "../../components/SelectInput";
 import * as S from "./styles";
 
 export function List() {
-  const options = [
+  const months = [
     {
-      value: "Elton",
-      label: "Elton",
+      value: 4,
+      label: "Abril",
     },
     {
-      value: "Bea",
-      label: "Bea",
+      value: 5,
+      label: "Maio",
     },
     {
-      value: "Zaum",
-      label: "Zaum",
+      value: 6,
+      label: "Junho",
+    },
+  ];
+
+  const years = [
+    {
+      value: 2021,
+      label: 2021,
+    },
+    {
+      value: 2020,
+      label: 2020,
+    },
+    {
+      value: 2019,
+      label: 2019,
     },
   ];
 
   return (
     <S.Container>
       <ContentHeader title="Saidas" lineColor="#e44c4e">
-        <SelectInput options={options} />
+        <SelectInput options={months} />
+        <SelectInput options={years} />
       </ContentHeader>
+
+      <S.Filters>
+        <button type="button" className="tag-filter tag-filter-recurrent">
+          Recorrentes
+        </button>
+        <button type="button" className="tag-filter tag-filter-eventual">
+          Eventuais
+        </button>
+      </S.Filters>
 
       <S.Content>
         <HistoryFinanceCard

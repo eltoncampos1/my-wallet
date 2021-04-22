@@ -22,7 +22,13 @@ export const TitleContainer = styled.div<ITitleContainerProps>`
           content: '';
           display: block;
           width: 55px;
-          border-bottom: 10px solid ${props => props.lineColor};
+          -webkit-border-top-left-radius: 5px;
+          -webkit-border-top-right-radius: 5px;
+          -moz-border-radius-topleft: 5px;
+          -moz-border-radius-topright: 5px;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          border-bottom: 8px solid ${props => props.lineColor};
       }
   }
 `;
