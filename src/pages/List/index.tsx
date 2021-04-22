@@ -1,4 +1,5 @@
 import { ContentHeader } from "../../components/ContentHeader";
+import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
 import { SelectInput } from "../../components/SelectInput";
 
 import * as S from "./styles";
@@ -24,6 +25,86 @@ export function List() {
       <ContentHeader title="Saidas" lineColor="#e44c4e">
         <SelectInput options={options} />
       </ContentHeader>
+
+      <S.Content>
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagcolor="#e44c4e"
+          title="Internet"
+          subTitle="21/04/2021"
+          amount="R$ 120,00"
+        />
+      </S.Content>
     </S.Container>
   );
 }
