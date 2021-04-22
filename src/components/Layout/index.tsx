@@ -1,15 +1,20 @@
+import { ReactNode } from "react";
 import { MainHeader } from "../MainHeader";
 import { Aside } from "../Aside";
 import { Content } from "../Content";
 
 import * as S from "./styles";
 
-export function Layout() {
+interface IProps {
+  children: ReactNode;
+}
+
+export function Layout({ children }: IProps) {
   return (
     <S.Grid>
       <MainHeader />
       <Aside />
-      <Content />
+      <Content>{children}</Content>
     </S.Grid>
   );
 }
