@@ -1,15 +1,22 @@
 import * as S from "./styles";
 
-export function ContentHeader() {
+interface IContentHeaderprops {
+  title: string;
+  lineColor: string;
+  children: React.ReactNode;
+}
+
+export function ContentHeader({
+  title,
+  lineColor,
+  children,
+}: IContentHeaderprops) {
   return (
     <S.Container>
-      <S.TitleContainer>
-        <h1>Title</h1>
+      <S.TitleContainer lineColor={lineColor}>
+        <h1>{title}</h1>
       </S.TitleContainer>
-      <S.Controllers>
-        <button type="button">Botão a</button>
-        <button type="button">Botão b</button>
-      </S.Controllers>
+      <S.Controllers>{children}</S.Controllers>
     </S.Container>
   );
 }

@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 
-import { Dashboard } from "./pages/Dashboard";
+// import { Dashboard } from "./pages/Dashboard";
+import { List } from "./pages/List";
 
 import { GlobalStyle } from "./styles/global";
 import { Layout } from "./components/Layout";
@@ -11,7 +12,8 @@ export function App() {
     <ThemeProvider theme={dark}>
       <GlobalStyle />
       <Layout>
-        <Dashboard />
+        {/* <Dashboard /> */}
+        <List />
       </Layout>
     </ThemeProvider>
   );
