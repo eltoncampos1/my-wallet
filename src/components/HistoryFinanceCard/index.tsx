@@ -1,7 +1,6 @@
 import * as S from "./styles";
 
 interface IHistoryFinanceCardProps {
-  cardColor: string;
   tagcolor: string;
   title: string;
   subTitle: string;
@@ -9,14 +8,13 @@ interface IHistoryFinanceCardProps {
 }
 
 export function HistoryFinanceCard({
-  cardColor,
   tagcolor,
   amount,
   title,
   subTitle,
 }: IHistoryFinanceCardProps) {
   return (
-    <S.Container color={cardColor}>
+    <S.Container>
       <S.Tag color={tagcolor} />
       <div>
         <span>{title}</span>

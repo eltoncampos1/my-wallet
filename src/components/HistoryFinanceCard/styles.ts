@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 
-interface IContainerProps {
-    color: string;
-}
+
 interface ItagProps {
     color: string;
 }
 
-export const Container = styled.li<IContainerProps>`
+export const Container = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
   
-  background-color: ${props => props.color};
+  background-color: ${props => props.theme.colors.tertiary};
 
   list-style:none;
   border-radius: 5px;
