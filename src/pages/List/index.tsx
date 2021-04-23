@@ -8,6 +8,7 @@ import expenses from "../../repositories/expenses";
 
 import * as S from "./styles";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { formatDate } from "../../utils/formatDate";
 
 interface IRouteParams {
   match: {
@@ -83,7 +84,7 @@ export function List({ match }: IRouteParams) {
         description: item.description,
         amountFormated: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
-        dateFormated: item.date,
+        dateFormated: formatDate(item.date),
         tagcolor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e",
       };
     });
