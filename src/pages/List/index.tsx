@@ -7,6 +7,7 @@ import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
 
 import * as S from "./styles";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 interface IRouteParams {
   match: {
@@ -80,7 +81,7 @@ export function List({ match }: IRouteParams) {
       return {
         id: String(Math.random() * data.length),
         description: item.description,
-        amountFormated: item.amount,
+        amountFormated: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
         dateFormated: item.date,
         tagcolor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e",
@@ -88,7 +89,7 @@ export function List({ match }: IRouteParams) {
     });
 
     setData(response);
-  }, [listData]);
+  }, [listData, data.length]);
 
   return (
     <S.Container>
