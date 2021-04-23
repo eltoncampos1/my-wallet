@@ -1,10 +1,46 @@
+import { useMemo, useState, useEffect } from "react";
 import { ContentHeader } from "../../components/ContentHeader";
 import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
 import { SelectInput } from "../../components/SelectInput";
 
+import gains from "../../repositories/gains";
+import expenses from "../../repositories/expenses";
+
 import * as S from "./styles";
 
-export function List() {
+interface IRouteParams {
+  match: {
+    params: {
+      type: string;
+    };
+  };
+}
+
+interface IData {
+  id: string;
+  description: string;
+  amountFormated: string;
+  frequency: string;
+  dateFormated: string;
+  tagcolor: string;
+}
+
+export function List({ match }: IRouteParams) {
+  const [data, setData] = useState<IData[]>([]);
+
+  const { type } = match.params;
+  const { title, lineColor } = useMemo(() => {
+    return type === "entry-balance"
+      ? {
+          title: "Entradas",
+          lineColor: "#f79318",
+        }
+      : {
+          title: "Saídas",
+          lineColor: "#e44c4e",
+        };
+  }, [type]);
+
   const months = [
     {
       value: 4,
@@ -35,9 +71,28 @@ export function List() {
     },
   ];
 
+  const listData = useMemo(() => {
+    return type === "entry-balance" ? gains : expenses;
+  }, [type]);
+
+  useEffect(() => {
+    const response = listData.map((item) => {
+      return {
+        id: String(Math.random() * data.length),
+        description: item.description,
+        amountFormated: item.amount,
+        frequency: item.frequency,
+        dateFormated: item.date,
+        tagcolor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e",
+      };
+    });
+
+    setData(response);
+  }, [listData]);
+
   return (
     <S.Container>
-      <ContentHeader title="Saidas" lineColor="#e44c4e">
+      <ContentHeader title={title} lineColor={lineColor}>
         <SelectInput options={months} />
         <SelectInput options={years} />
       </ContentHeader>
@@ -52,12 +107,15 @@ export function List() {
       </S.Filters>
 
       <S.Content>
-        <HistoryFinanceCard
-          tagcolor="#e44c4e"
-          title="Internet"
-          subTitle="21/04/2021"
-          amount="R$ 120,00"
-        />
+        {data.map((item) => (
+          <HistoryFinanceCard
+            key={item.id}
+            tagcolor={item.tagcolor}
+            title={item.description}
+            subTitle={item.dateFormated}
+            amount={item.amountFormated}
+          />
+        ))}
       </S.Content>
     </S.Container>
   );
