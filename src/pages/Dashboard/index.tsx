@@ -22,7 +22,7 @@ export function Dashboard() {
   return (
     <S.Container>
       <ContentHeader title="Dashboard" lineColor="#f7931b">
-        <SelectInput options={options} />
+        <SelectInput onChange={() => {}} options={options} />
       </ContentHeader>
     </S.Container>
   );
