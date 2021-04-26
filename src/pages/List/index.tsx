@@ -1,4 +1,8 @@
 import { useMemo, useState, useEffect } from "react";
+import { v4 as uuid } from "uuid";
+
+import listOfmonths from "../../utils/months";
+
 import { ContentHeader } from "../../components/ContentHeader";
 import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
 import { SelectInput } from "../../components/SelectInput";
@@ -50,39 +54,53 @@ export function List({ match }: IRouteParams) {
         };
   }, [type]);
 
-  const months = [
-    {
-      value: 4,
-      label: "Abril",
-    },
-    {
-      value: 5,
-      label: "Maio",
-    },
-    {
-      value: 6,
-      label: "Junho",
-    },
-  ];
-
-  const years = [
-    {
-      value: 2021,
-      label: 2021,
-    },
-    {
-      value: 2020,
-      label: 2020,
-    },
-    {
-      value: 2019,
-      label: 2019,
-    },
-  ];
-
   const listData = useMemo(() => {
     return type === "entry-balance" ? gains : expenses;
   }, [type]);
+
+  // const months = [
+  //   {
+  //     value: 4,
+  //     label: "Abril",
+  //   },
+  //   {
+  //     value: 5,
+  //     label: "Maio",
+  //   },
+  //   {
+  //     value: 6,
+  //     label: "Junho",
+  //   },
+  // ];
+
+  const years = useMemo(() => {
+    let uniqueYears: number[] = [];
+
+    listData.forEach((item) => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+
+      if (!uniqueYears.includes(year)) {
+        uniqueYears.push(year);
+      }
+    });
+
+    return uniqueYears.map((year) => {
+      return {
+        value: year,
+        label: year,
+      };
+    });
+  }, [listData]);
+
+  const months = useMemo(() => {
+    return listOfmonths.map((month, index) => {
+      return {
+        value: index + 1,
+        label: month,
+      };
+    });
+  }, []);
 
   useEffect(() => {
     const filteredDate = listData.filter((item) => {
@@ -95,7 +113,7 @@ export function List({ match }: IRouteParams) {
 
     const foramatedDate = filteredDate.map((item) => {
       return {
-        id: String(new Date().getTime() + item.amount),
+        id: uuid(),
         description: item.description,
         amountFormated: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
